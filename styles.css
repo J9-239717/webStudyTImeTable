@@ -16,6 +16,8 @@ body {
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 1000px;
+    margin: auto;
 }
 
 /* Day and time headers */
@@ -34,6 +36,7 @@ body {
 
 .time-header {
     grid-column: 1;
+    font-size: 14px;
 }
 
 /* Class blocks */
@@ -47,7 +50,8 @@ body {
     flex-direction: column;
     justify-content: center;
     text-align: center;
-    transition: transform 0.2s;
+    transition: transform 0.2s, box-shadow 0.2s;
+    font-size: 14px;
 }
 
 /* Hover effect for class blocks */
@@ -68,16 +72,48 @@ body {
     .timetable {
         grid-template-columns: 1fr; /* Stack columns */
         grid-template-rows: auto;   /* Let rows auto adjust */
+        gap: 15px;
     }
 
-    /* Adjust headers for stacked layout */
+    /* Adjust day headers for stacked layout */
     .day-header, .time-header {
         grid-column: span 1;
+        font-size: 14px;
+        padding: 10px;
     }
-    
+
     /* Class block full width in stacked view */
     .class-block {
         grid-column: span 1;
         width: 100%;
+    }
+}
+
+/* Additional styles for very small screens (mobile) */
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+
+    .timetable {
+        padding: 10px;
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    /* Make the font smaller for mobile */
+    .day-header, .time-header {
+        font-size: 12px;
+        padding: 8px;
+    }
+
+    .class-block {
+        padding: 10px;
+        font-size: 12px;
+    }
+
+    .time-slot {
+        font-size: 10px;
+        margin-top: 5px;
     }
 }
