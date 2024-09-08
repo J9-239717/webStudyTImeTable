@@ -16,7 +16,7 @@ function renderTimetable(data) {
     data.forEach(item => {
         const startTime = item.formatted_time.start_time;
         const endTime = item.formatted_time.end_time;
-        const daysWeeks = item.formatted_time.days_weeks;
+        const dayWeeks = item.formatted_time.day_weeks;  // Fix typo here
 
         // Create class block element
         const classBlock = document.createElement('div');
@@ -33,8 +33,8 @@ function renderTimetable(data) {
         `;
 
         // Dynamically position the class block according to the day and time
-        let timeIndex = timeIntervals.indexOf(startTime);
-        let dayIndex = getDayIndex(daysWeeks);
+        let timeIndex = getTimeIndex(startTime, endTime, timeIntervals);
+        let dayIndex = getDayIndex(dayWeeks);
 
         if (timeIndex !== -1 && dayIndex !== -1) {
             classBlock.style.gridRow = timeIndex + 2; // +2 to account for header rows
@@ -45,13 +45,28 @@ function renderTimetable(data) {
     });
 }
 
-// Helper function to get the day index from "days_weeks"
-function getDayIndex(daysWeeks) {
+// Helper function to get the day index from "day_weeks"
+function getDayIndex(dayWeeks) {
     const days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
     for (let i = 0; i < days.length; i++) {
-        if (daysWeeks.toLowerCase().includes(days[i])) {
+        if (dayWeeks.toLowerCase().includes(days[i])) {
             return i;
         }
     }
     return -1;
+}
+
+// Helper function to get the time index based on start and end time
+function getTimeIndex(startTime, endTime, timeIntervals) {
+    // Find the closest matching start time from the timeIntervals
+    let timeIndex = timeIntervals.indexOf(startTime);
+    if (timeIndex === -1) {
+        // If start time not found, calculate the closest interval
+        for (let i = 0; i < timeIntervals.length; i++) {
+            if (parseInt(startTime) < parseInt(timeIntervals[i])) {
+                return i - 1 >= 0 ? i - 1 : 0;
+            }
+        }
+    }
+    return timeIndex;
 }
