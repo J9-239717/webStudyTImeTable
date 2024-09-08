@@ -1,22 +1,172 @@
 [
-    {
-        "class_name": "Probability and Statistics",
-        "class_id": "154808",
-        "room": "D9-101",
-        "formatted_time": {
-            "start_time": "0645",
-            "end_time": "0920",
-            "days_weeks": "Monday"
-        }
-    },
-    {
-        "class_name": "Physics II",
-        "class_id": "153998",
-        "room": "D3-5 201",
-        "formatted_time": {
-            "start_time": "1015",
-            "end_time": "1145",
-            "days_weeks": "Monday"
-        }
+  {
+    "class_name": "Object-Oriented Programming",
+    "class_id": "153989",
+    "room": "D3-5-201",
+    "formatted_time": {
+      "start_time": "1505",
+      "end_time": "1730",
+      "day_weeks": "Wednesday"
     }
+  },
+  {
+    "class_name": "Computer Architectures",
+    "class_id": "153990",
+    "room": "D3-5-201",
+    "formatted_time": {
+      "start_time": "1410",
+      "end_time": "1730",
+      "day_weeks": "Tuesday"
+    }
+  },
+  {
+    "class_name": "Probability and Statistics",
+    "class_id": "154809",
+    "room": "D5-505",
+    "formatted_time": {
+      "start_time": "1015",
+      "end_time": "1145",
+      "day_weeks": "Wednesday"
+    }
+  },
+  {
+    "class_name": "Probability and Statistics",
+    "class_id": "154808",
+    "room": "D9-101",
+    "formatted_time": {
+      "start_time": "0825",
+      "end_time": "1005",
+      "day_weeks": "Monday"
+    }
+  },
+  {
+    "class_name": "Physics II",
+    "class_id": "153997",
+    "room": "D3-402",
+    "formatted_time": {
+      "start_time": "0645",
+      "end_time": "0815",
+      "day_weeks": "Wednesday"
+    }
+  },
+  {
+    "class_name": "Physics II",
+    "class_id": "153996",
+    "room": "D3-5-201",
+    "formatted_time": {
+      "start_time": "1015",
+      "end_time": "1145",
+      "day_weeks": "Monday"
+    }
+  },
+  {
+    "class_name": "Physics II",
+    "class_id": "745956",
+    "room": "D3-203",
+    "formatted_time": {
+      "start_time": "1300",
+      "end_time": "1505",
+      "day_weeks": "Monday"
+    }
+  },
+  {
+    "class_name": "Introduction to Optimization Methods",
+    "class_id": "153986",
+    "room": "D3-402",
+    "formatted_time": {
+      "start_time": "1230",
+      "end_time": "1455",
+      "day_weeks": "Wednesday"
+    }
+  },
+  {
+    "class_name": "Basketball I",
+    "class_id": "745156",
+    "room": "SB7",
+    "formatted_time": {
+      "start_time": "1530",
+      "end_time": "1630",
+      "day_weeks": "Monday"
+    }
+  },
+  {
+    "class_name": "Programming Techniques",
+    "class_id": "154034",
+    "room": "D5-304",
+    "formatted_time": {
+      "start_time": "0645",
+      "end_time": "0815",
+      "day_weeks": "Thursday"
+    }
+  },
+  {
+    "class_name": "Programming Techniques",
+    "class_id": "744467",
+    "room": "B1-203",
+    "formatted_time": {
+      "start_time": "1230",
+      "end_time": "1500",
+      "day_weeks": "Saturday"
+    }
+  },
+  {
+    "class_name": "Political Economics of Marxism and Leninism",
+    "class_id": "156067",
+    "room": "D3-5-201",
+    "formatted_time": {
+      "start_time": "1505",
+      "end_time": "1730",
+      "day_weeks": "Friday"
+    }
+  },
+  {
+    "class_name": "Scientific Socialism",
+    "class_id": "156144",
+    "room": "TC-204",
+    "formatted_time": {
+      "start_time": "1230",
+      "end_time": "1455",
+      "day_weeks": "Thursday"
+    }
+  },
+  {
+    "class_name": "Scientific Socialism",
+    "class_id": "156142",
+    "room": "TC-204",
+    "formatted_time": {
+      "start_time": "1230",
+      "end_time": "1455",
+      "day_weeks": "Thursday"
+    }
+  },
+  {
+    "class_name": "Political Economics of Marxism and Leninism",
+    "class_id": "156066",
+    "room": "D3-5-201",
+    "formatted_time": {
+      "start_time": "1505",
+      "end_time": "1730",
+      "day_weeks": "Friday"
+    }
+  },
+  {
+    "class_name": "Calculus I",
+    "class_id": "153225",
+    "room": "D5-303",
+    "formatted_time": {
+      "start_time": "1015",
+      "end_time": "1145",
+      "day_weeks": "Friday"
+    }
+  },
+  {
+    "class_name": "Calculus I",
+    "class_id": "153223",
+    "room": "D3-301",
+    "formatted_time": {
+      "start_time": "0920",
+      "end_time": "1145",
+      "day_weeks": "Saturday"
+    }
+  }
 ]
