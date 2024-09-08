@@ -8,7 +8,8 @@
 </head>
 <body>
     <div class="timetable">
-        <div class="time-header"></div>
+        <!-- Day Headers -->
+        <div class="time-header"></div> <!-- Empty cell for time column -->
         <div class="day-header" id="monday">Monday</div>
         <div class="day-header" id="tuesday">Tuesday</div>
         <div class="day-header" id="wednesday">Wednesday</div>
@@ -17,7 +18,16 @@
         <div class="day-header" id="saturday">Saturday</div>
         <div class="day-header" id="sunday">Sunday</div>
 
-        <!-- Timetable content will be dynamically added here -->
+        <!-- Time Slot Headers -->
+        <div class="time-header">06:45 - 08:15</div>
+        <div class="time-header">08:25 - 10:05</div>
+        <div class="time-header">10:15 - 11:45</div>
+        <div class="time-header">12:00 - 13:30</div>
+        <div class="time-header">13:45 - 15:15</div>
+        <div class="time-header">15:25 - 17:00</div>
+        <div class="time-header">17:05 - 18:30</div>
+
+        <!-- Dynamic Schedule Container -->
         <div id="schedule-container"></div>
     </div>
 
