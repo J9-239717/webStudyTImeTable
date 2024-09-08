@@ -4,9 +4,8 @@ body {
 
 .timetable {
     display: grid;
-    grid-template-columns: repeat(8, 1fr); /* 7 days + time column */
-    grid-auto-rows: 80px;
-    grid-gap: 10px;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(8, auto); /* 1 row for header and rest for time intervals */
 }
 
 .time-header, .day-header {
