@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Mapping days of the week to grid columns
+    // Mapping days of the week to grid columns (for a 7-day schedule)
     const dayToColumn = {
         'Monday': 2,
         'Tuesday': 3,
@@ -10,15 +10,20 @@ document.addEventListener('DOMContentLoaded', function() {
         'Sunday': 8
     };
 
-    // Mapping time slots to grid rows
+    // Mapping time slots to grid rows (assuming a 24-hour timetable with 15-minute slots)
+    // Adjust these numbers to your specific grid system if needed.
     const timeToRow = {
-        '0645': 2,
+        '0645': 2,  // Start at row 2 for 06:45
         '0825': 3,
         '1015': 4,
         '1230': 5,
         '1505': 6,
-        '1530': 7,  // Special case for 'Basketball I'
-        '1300': 7,  // Special case for 'Physics II' (longer session)
+        '1530': 7,
+        '1300': 7, // Special case for 13:00
+        '1410': 8,
+        '1630': 9,
+        '1730': 10,
+        // Add more times if needed
     };
 
     const scheduleContainer = document.getElementById('schedule-container');
@@ -40,6 +45,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 // Calculate the grid-column based on the day of the week
                 const column = dayToColumn[classData.formatted_time.day_weeks];
+                
+                // Calculate the grid-row based on start and end times
                 const rowStart = timeToRow[classData.formatted_time.start_time];
                 const rowEnd = calculateRowEnd(classData.formatted_time.start_time, classData.formatted_time.end_time, timeToRow);
 
@@ -60,6 +67,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Helper function to calculate row end based on start and end time
     function calculateRowEnd(startTime, endTime, timeToRow) {
-        return timeToRow[endTime] || (timeToRow[startTime] + 1);
+        const startRow = timeToRow[startTime];
+        const endRow = timeToRow[endTime];
+        
+        // If we don't have an exact match for the end time, increment by 1 row
+        return endRow || (startRow + 1);
     }
 });
