@@ -1,62 +1,65 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Fetch JSON file and render timetable
+    // Mapping days of the week to grid columns
+    const dayToColumn = {
+        'Monday': 2,
+        'Tuesday': 3,
+        'Wednesday': 4,
+        'Thursday': 5,
+        'Friday': 6,
+        'Saturday': 7,
+        'Sunday': 8
+    };
+
+    // Mapping time slots to grid rows
+    const timeToRow = {
+        '0645': 2,
+        '0825': 3,
+        '1015': 4,
+        '1230': 5,
+        '1505': 6,
+        '1530': 7,  // Special case for 'Basketball I'
+        '1300': 7,  // Special case for 'Physics II' (longer session)
+    };
+
+    const scheduleContainer = document.getElementById('schedule-container');
+
+    // Fetch the JSON data from the schedule.json file
     fetch('plan_jerry.json')
         .then(response => response.json())
         .then(data => {
-            renderTimetable(data);
+            data.forEach(classData => {
+                // Create a new class block for each class
+                const classBlock = document.createElement('div');
+                classBlock.classList.add('class-block');
+                classBlock.innerHTML = `
+                    ${classData.class_name}<br>
+                    Room: ${classData.room}<br>
+                    Class ID: ${classData.class_id}
+                    <div class="time-slot">${formatTime(classData.formatted_time.start_time)} - ${formatTime(classData.formatted_time.end_time)}</div>
+                `;
+
+                // Calculate the grid-column based on the day of the week
+                const column = dayToColumn[classData.formatted_time.day_weeks];
+                const rowStart = timeToRow[classData.formatted_time.start_time];
+                const rowEnd = calculateRowEnd(classData.formatted_time.start_time, classData.formatted_time.end_time, timeToRow);
+
+                // Set CSS grid position
+                classBlock.style.gridColumn = column;
+                classBlock.style.gridRow = `${rowStart} / ${rowEnd}`;
+
+                // Append to container
+                scheduleContainer.appendChild(classBlock);
+            });
         })
         .catch(error => console.error('Error loading JSON:', error));
-});
 
-// Function to render the timetable
-function renderTimetable(data) {
-    const container = document.getElementById('schedule-container');
-    const timeIntervals = ["0645", "0920", "1015", "1145", "1300", "1455", "1730"]; // Time slots
-    const daysOfWeek = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
-
-    data.forEach(item => {
-        const startTime = item.formatted_time.start_time;
-        const endTime = item.formatted_time.end_time;
-        const dayWeeks = item.formatted_time.day_weeks;  // Assuming day_weeks contains the day in lowercase
-
-        // Create class block element
-        const classBlock = document.createElement('div');
-        classBlock.classList.add('class-block');
-
-        // Add class info
-        classBlock.innerHTML = `
-            <div class="class-info">
-                <strong>${item.class_name}</strong><br>
-                Room: ${item.room} <br>
-                Class ID: ${item.class_id}
-            </div>
-            <div class="time-slot">${startTime} - ${endTime}</div>
-        `;
-
-        // Dynamically position the class block according to the day and time
-        let timeIndex = getTimeIndex(startTime, timeIntervals);
-        let dayIndex = getDayIndex(dayWeeks, daysOfWeek);
-
-        if (timeIndex !== -1 && dayIndex !== -1) {
-            classBlock.style.gridRow = timeIndex + 2; // +2 to account for header rows
-            classBlock.style.gridColumn = dayIndex + 2; // +2 to account for time and day columns
-        }
-
-        container.appendChild(classBlock);
-    });
-}
-
-// Helper function to get the day index from "day_weeks"
-function getDayIndex(dayWeeks, daysOfWeek) {
-    for (let i = 0; i < daysOfWeek.length; i++) {
-        if (dayWeeks.toLowerCase().includes(daysOfWeek[i])) {
-            return i;
-        }
+    // Helper function to format time (e.g., '1505' => '15:05')
+    function formatTime(time) {
+        return time.slice(0, 2) + ':' + time.slice(2);
     }
-    return -1; // Return -1 if no matching day is found
-}
 
-// Helper function to get the time index based on start time
-function getTimeIndex(startTime, timeIntervals) {
-    return timeIntervals.indexOf(startTime); // Return the index of the time in the time intervals
-}
+    // Helper function to calculate row end based on start and end time
+    function calculateRowEnd(startTime, endTime, timeToRow) {
+        return timeToRow[endTime] || (timeToRow[startTime] + 1);
+    }
+});
