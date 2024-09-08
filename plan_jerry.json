@@ -1,0 +1,22 @@
+[
+    {
+        "class_name": "Probability and Statistics",
+        "class_id": "154808",
+        "room": "D9-101",
+        "formatted_time": {
+            "start_time": "0645",
+            "end_time": "0920",
+            "days_weeks": "Monday"
+        }
+    },
+    {
+        "class_name": "Physics II",
+        "class_id": "153998",
+        "room": "D3-5 201",
+        "formatted_time": {
+            "start_time": "1015",
+            "end_time": "1145",
+            "days_weeks": "Monday"
+        }
+    }
+]

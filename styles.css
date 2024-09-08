@@ -1,0 +1,44 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+.timetable {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr); /* 7 days + time column */
+    grid-auto-rows: 80px;
+    grid-gap: 10px;
+}
+
+.time-header, .day-header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+.day-header {
+    grid-row: 1;
+}
+
+.time-header {
+    grid-column: 1;
+    text-align: center;
+}
+
+.class-block {
+    background: linear-gradient(to right, #00bfa5, #1de9b6);
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.time-slot {
+    font-size: 12px;
+    margin-bottom: 8px;
+}
