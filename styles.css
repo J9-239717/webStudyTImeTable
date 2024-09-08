@@ -9,8 +9,8 @@ body {
 /* Timetable grid container */
 .timetable {
     display: grid;
-    grid-template-columns: 1fr repeat(7, 1fr); /* 1 column for time slots, 7 for days */
-    grid-template-rows: auto repeat(8, 1fr);   /* Auto height for headers, fixed rows for time slots */
+    grid-template-columns: 150px repeat(7, 1fr); /* First column for time slots, 7 for days */
+    grid-template-rows: 50px repeat(15, 1fr);    /* 1 row for day headers, rest for time slots */
     gap: 10px;
     padding: 20px;
     background-color: #fff;
@@ -28,12 +28,10 @@ body {
     border-radius: 5px;
 }
 
-/* Ensuring day headers span the first row */
 .day-header {
     grid-row: 1;
 }
 
-/* Ensuring time headers span the first column */
 .time-header {
     grid-column: 1;
 }
