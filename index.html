@@ -6,105 +6,109 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Time Table</title>
     <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f0f2f5;
-            margin: 0;
-            padding: 0;
-        }
+        /* Base styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #121212; /* Dark background for dark mode */
+    color: #e0e0e0; /* Light text color */
+    margin: 0;
+    padding: 0;
+}
 
-        h1 {
-            text-align: center;
-            color: #333;
-            margin: 20px 0;
-            font-size: 32px;
-            letter-spacing: 1.5px;
-        }
+h1 {
+    text-align: center;
+    color: #ffffff; /* White text for headers */
+    margin: 20px 0;
+    font-size: 28px;
+    letter-spacing: 1px;
+}
 
-        h1 div {
-            margin-bottom: 10px;
-        }
+h1 div {
+    margin-bottom: 10px;
+}
 
-        h1 p {
-            font-size: 20px;
-            margin: 0;
-        }
+h1 p {
+    font-size: 18px;
+    margin: 0;
+}
 
-        table {
-            width: 90%;
-            border-collapse: collapse;
-            margin: 20px auto;
-            background-color: #fff;
-            border: none;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-        }
+table {
+    width: 90%;
+    border-collapse: collapse;
+    margin: 20px auto;
+    background-color: #1e1e1e; /* Darker background for the table */
+    border: none;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Darker shadow for better visibility */
+}
 
-        th,
-        td {
-            padding: 15px;
-            text-align: center;
-            border: none;
-        }
+th,
+td {
+    padding: 12px;
+    text-align: center;
+    border: none;
+}
 
-        th {
-            background-color: #343a40;
-            color: #fff;
-            font-size: 18px;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
+th {
+    background-color: #333; /* Dark background for headers */
+    color: #ffffff; /* White text for headers */
+    font-size: 16px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
 
-        td {
-            background-color: #f8f9fa;
-            color: #333;
-            font-size: 16px;
-            font-weight: 500;
-        }
+td {
+    background-color: #222; /* Slightly lighter dark background for cells */
+    color: #e0e0e0; /* Light text color */
+    font-size: 14px;
+    font-weight: 400;
+}
 
-        tr:nth-child(even) td {
-            background-color: #e9ecef;
-        }
+tr:nth-child(even) td {
+    background-color: #2b2b2b; /* Slightly lighter dark background for alternate rows */
+}
 
-        /* Row hover effect */
-        tr:hover td {
-            background-color: #dfe4ea;
-            color: #000;
-        }
+/* Row hover effect */
+tr:hover td {
+    background-color: #444;
+    color: #ffffff;
+}
 
-        /* Highlighted and special rows */
-        .highlight {
-            background-color: #ffe4b2 !important;
-        }
+/* Highlighted and special rows */
+.highlight {
+    background-color: #ffab00 !important; /* Highlighted row color */
+}
 
-        .special {
-            background-color: #b2dfdb !important;
-        }
+.special {
+    background-color: #4caf50 !important; /* Special row color */
+    border: 2px solid #ffffff; /* White border for special rows */
+}
 
-        /* Responsive design */
-        @media (max-width: 768px) {
-            table {
-                width: 100%;
-                font-size: 14px;
-            }
+/* Responsive design */
+@media (max-width: 768px) {
+    table {
+        width: 100%;
+        font-size: 12px;
+    }
 
-            th,
-            td {
-                padding: 10px;
-            }
+    th,
+    td {
+        padding: 8px;
+    }
 
-            h1 {
-                font-size: 28px;
-            }
-        }
+    h1 {
+        font-size: 24px;
+    }
+}
     </style>
 </head>
 
 <body>
     <h1>
         <div>Time Table</div>
-        <p>This is week <span id="week-number" class="highlight"></span> of school.</p>
+        <p>Current Date: <span id="current-date"></span></p>
+        <p>This is week <span id="week-number"></span> of school.</p>
     </h1>
     <table>
         <tr>
