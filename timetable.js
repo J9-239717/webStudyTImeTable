@@ -76,7 +76,7 @@ function generateTimetable(timetableData) {
 
                 // If the subject should be shown for the current week
                 if (can_show) {
-                    const currentSubject = sub_str[0] + "\n"+ sub_str[2];
+                    const currentSubject = sub_str[0] + "\n"+ sub_str[2] + "\n" + sub_str[3];
 
                     if (previousSubject === currentSubject) {
                         // If the current subject matches the previous, increase colspan
