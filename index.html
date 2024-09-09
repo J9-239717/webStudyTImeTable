@@ -1,36 +1,131 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Timetable</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Time Table</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin: 20px 0;
+            font-size: 32px;
+            letter-spacing: 1.5px;
+        }
+
+        h1 div {
+            margin-bottom: 10px;
+        }
+
+        h1 p {
+            font-size: 20px;
+            margin: 0;
+        }
+
+        table {
+            width: 90%;
+            border-collapse: collapse;
+            margin: 20px auto;
+            background-color: #fff;
+            border: none;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        th,
+        td {
+            padding: 15px;
+            text-align: center;
+            border: none;
+        }
+
+        th {
+            background-color: #343a40;
+            color: #fff;
+            font-size: 18px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        td {
+            background-color: #f8f9fa;
+            color: #333;
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        tr:nth-child(even) td {
+            background-color: #e9ecef;
+        }
+
+        /* Row hover effect */
+        tr:hover td {
+            background-color: #dfe4ea;
+            color: #000;
+        }
+
+        /* Highlighted and special rows */
+        .highlight {
+            background-color: #ffe4b2 !important;
+        }
+
+        .special {
+            background-color: #b2dfdb !important;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            table {
+                width: 100%;
+                font-size: 14px;
+            }
+
+            th,
+            td {
+                padding: 10px;
+            }
+
+            h1 {
+                font-size: 28px;
+            }
+        }
+    </style>
 </head>
+
 <body>
-    <div class="timetable">
-        <!-- Day Headers -->
-        <div class="time-header"></div> <!-- Empty cell for time column -->
-        <div class="day-header" id="monday">Monday</div>
-        <div class="day-header" id="tuesday">Tuesday</div>
-        <div class="day-header" id="wednesday">Wednesday</div>
-        <div class="day-header" id="thursday">Thursday</div>
-        <div class="day-header" id="friday">Friday</div>
-        <div class="day-header" id="saturday">Saturday</div>
-        <div class="day-header" id="sunday">Sunday</div>
+    <h1>
+        <div>Time Table</div>
+        <p>This is week <span id="week-number" class="highlight"></span> of school.</p>
+    </h1>
+    <table>
+        <tr>
+            <th>Day/Period</th>
+            <th>6h</th>
+            <th>7h</th>
+            <th>8h</th>
+            <th>9h</th>
+            <th>10h</th>
+            <th>11h</th>
+            <th>12h</th>
+            <th>13h</th>
+            <th>14h</th>
+            <th>15h</th>
+            <th>16h</th>
+            <th>17h</th>
+        </tr>
+        <!-- Timetable data will be populated here by JavaScript -->
+    </table>
 
-        <!-- Time Slot Headers -->
-        <div class="time-header">06:45 - 08:15</div>
-        <div class="time-header">08:25 - 10:05</div>
-        <div class="time-header">10:15 - 11:45</div>
-        <div class="time-header">12:00 - 13:30</div>
-        <div class="time-header">13:45 - 15:15</div>
-        <div class="time-header">15:25 - 17:00</div>
-        <div class="time-header">17:05 - 18:30</div>
-
-        <!-- Dynamic Schedule Container -->
-        <div id="schedule-container"></div>
-    </div>
-
-    <script src="script.js"></script>
+    <script src="timetable.js"></script>
 </body>
+
 </html>
