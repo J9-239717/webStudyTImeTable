@@ -11,6 +11,9 @@ async function fetchTimetableDataAndCourseData() {
 
         generateTimetable(timetableData);
         calculateWeekNumber();
+
+        // Optionally log the course data for debugging
+        console.log(courseData);
     } catch (error) {
         console.error("Error fetching timetable data:", error);
     }
@@ -31,6 +34,8 @@ function searchSub_in(org) {
     // Iterate through each category in the course data
     for (const category in courseData) {
         courseData[category].forEach(course => {
+            // Check if 'course' and 'course.name' exist to avoid errors
+            console.log(course);
             if (course && course.toLowerCase().includes(query)) {
                 results.push(course);
             }
@@ -78,6 +83,8 @@ function searchSub() {
     // Iterate through each category in the course data
     for (const category in courseData) {
         courseData[category].forEach(course => {
+            // Check if 'course' and 'course.name' exist to avoid errors
+            console.log(course);
             if (course && course.toLowerCase().includes(query)) {
                 results.push(course);
             }

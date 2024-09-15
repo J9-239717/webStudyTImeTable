@@ -1,0 +1,57 @@
+//////////////////////////////////////plan_jerry//////////////////////////////////////
+///// MA LOP FOR DK/////
+
+//Object-Oriented Programming//
+153989	LT+BT
+//////////
+
+//Computer Architectures//
+153990	LT+BT
+//////////
+
+//Probability and Statistics//
+154809	BT
+154808	LT
+//////////
+
+//Physics II//
+153997	BT
+153996	LT
+//////////
+
+//Physics II//
+745956	TN
+//////////
+
+//Introduction to Optimization Methods//
+153986	LT+BT
+//////////
+
+//Basketball I//
+745156	LT+BT
+//////////
+
+//Programming Techniques//
+154034	LT+BT
+744467	TN
+//////////
+
+//Political Economics of Marxism and Leninism//
+156067	BT
+//////////
+
+//Scientific Socialism//
+156144	BT
+156142	LT
+//////////
+
+//Political Economics of Marxism and Leninism//
+156066	LT
+//////////
+
+//Calculus I//
+153225	BT
+153223	LT
+//////////
+
+///////////////////////////////////////////////////////////////////////////////////

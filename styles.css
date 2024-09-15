@@ -115,6 +115,25 @@ input{
     display: none;
 }
 
+/* Go Back Button Styling */
+.headerBottom {
+    background-color: var(--button-bg);
+    color: var(--primary-text-color);
+    padding: 10px 20px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-size: 0.9em;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0px 4px 10px rgba(255, 254, 168, 0.2);
+}
+
+.headerBottom:hover {
+    background-color: var(--button-hover-bg);
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
 /* Responsive design */
 @media (max-width: 768px) {
     table {

@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TODO List</title>
+    <style>
+        /* CSS Variables */
+        :root {
+            --main-bg-color: #1f1f1f;
+            --header-bg-color: #333;
+            --primary-text-color: #fff;
+            --secondary-text-color: #f4eb9b;
+            --note-bg-color: #3b3b3b;
+            --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            --hover-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            --button-bg: #4a4a4a;
+            --button-hover-bg: #6c6c6c;
+            --container-bg-gradient: linear-gradient(135deg, #232323, #444444);
+        }
+
+        body {
+            background-color: var(--main-bg-color);
+            font-family: Arial, sans-serif;
+            margin: 0;
+            color: var(--primary-text-color);
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--header-bg-color);
+            color: var(--primary-text-color);
+            padding: 15px;
+            text-align: center;
+            font-size: 1.5em;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Go Back Button Styling */
+        .headerBottom {
+            background-color: var(--button-bg);
+            color: var(--primary-text-color);
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-size: 0.9em;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .headerBottom:hover {
+            background-color: var(--button-hover-bg);
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Main Container */
+        .main-container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 20px;
+            min-height: 90vh;
+        }
+
+        /* Enhanced Grid Container */
+        .todo-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            grid-gap: 20px;
+            width: 85%;
+            background: var(--container-bg-gradient);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: var(--hover-shadow);
+            margin-top: 30px;
+        }
+
+        /* Simplified TODO Item */
+        .todo-item {
+            background-color: #d3d3d3;
+            padding: 15px;
+            border-radius: 15px;
+            box-shadow: var(--box-shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .todo-item:hover {
+            transform: scale(1.05);
+            box-shadow: var(--hover-shadow);
+        }
+
+        /* TODO Item Header */
+        .todo-item h2 {
+            background-color: var(--header-bg-color);
+            color: var(--secondary-text-color);
+            padding: 10px;
+            border-radius: 8px;
+            margin: 0;
+            font-size: 1.1em;
+            text-align: center;
+            box-shadow: var(--hover-shadow);
+        }
+
+        /* Note Section */
+        .todo-item .note {
+            background-color: var(--note-bg-color);
+            color: #f0f0f0;
+            padding: 10px;
+            border-radius: 8px;
+            border-left: 5px solid #ff7070;
+            box-shadow: var(--box-shadow);
+            font-size: 0.95em;
+            line-height: 1.5;
+        }
+
+        /* TODO List */
+        .todo-item .todo-list {
+            list-style-type: none;
+            padding-left: 0;
+            margin: 10px 0;
+            font-size: 0.9em;
+        }
+
+        .todo-item .todo-list div {
+            display: flex;
+            flex-direction: column;
+            background: linear-gradient(135deg, #555555, #2e2e2e);
+            color: #e0e0e0;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-left: 5px solid #f4eb9b;
+        }
+
+        .todo-item .todo-list div:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Task Date */
+        .todo-item .todo-list div div:nth-child(1) {
+            font-size: 0.85em;
+            color: #ffdb70;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        /* Task Type */
+        .todo-item .todo-list div div:nth-child(2) {
+            font-size: 0.9em;
+            font-weight: bold;
+            padding: 3px 8px;
+            border-radius: 5px;
+            margin-bottom: 5px;
+            color: #ee6f6f;
+        }
+
+        /* Task Description */
+        .todo-item .todo-list div div:nth-child(3) {
+            font-size: 0.95em;
+            color: #fff;
+        }
+
+
+        /* Hide the overflow tasks */
+        .todo-item .todo-list .hidden {
+            display: none;
+        }
+
+         /* Show the overflow tasks */
+         .todo-item .todo-list .showing {
+            display: block;
+        }
+
+        /* See More Button */
+        .see-more {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .see-more button {
+            background-color: var(--button-bg);
+            color: var(--primary-text-color);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .see-more button:hover {
+            background-color: var(--button-hover-bg);
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <span class="header">TODO List</span>
+        <a href="index.html" class="headerBottom">Go Back</a>
+    </header>
+
+    <!-- Main Content Container -->
+    <div class="main-container">
+        <div class="todo-container" id="todo-container">
+            <!-- The TODO items will be dynamically inserted here -->
+        </div>
+    </div>
+
+    <script>
+        // Function to fetch TODO data from a JSON file
+        async function fetchTODO() {
+            try {
+                const response = await fetch('TODO.json');
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const data = await response.json();
+                displayTODOList(data);
+            } catch (error) {
+                console.error("Error fetching TODO list data", error);
+            }
+        }
+
+        // Function to display the TODO list in grid format
+        function displayTODOList(data) {
+            const todoContainer = document.getElementById('todo-container');
+            data.TODO.forEach((item, index) => {
+                const todoItem = document.createElement('div');
+                todoItem.classList.add('todo-item');
+
+                const name = document.createElement('h2');
+                name.textContent = item.name;
+                todoItem.appendChild(name);
+
+                const note = document.createElement('div');
+                note.classList.add('note');
+                note.textContent = item.note;
+                todoItem.appendChild(note);
+
+                const todoList = document.createElement('ul');
+                todoList.classList.add('todo-list');
+                item.todo.forEach((task, i) => {
+                    const list = document.createElement('div');
+                    const str = task.split("+");
+
+                    const dateSpan = document.createElement('div');
+                    dateSpan.textContent = `Date: ${str[0]}`;
+
+                    const typeSpan = document.createElement('div');
+                    typeSpan.classList.add('todo-type');
+                    const n = parseInt(str[1], 10);
+                    if(n == 2){
+                        typeSpan.textContent = 'Will Do';
+                    }else if(n == 1){
+                        typeSpan.textContent = 'Did';
+                        typeSpan.style.color = '#70a970';
+                    }else{
+                        typeSpan.textContent = 'NULL';
+                        typeSpan.style.color = 'green';
+                    }
+
+                    const todotextSpan = document.createElement('div');
+                    todotextSpan.textContent = `${str[2]}`;
+
+                    list.appendChild(dateSpan);
+                    list.appendChild(typeSpan);
+                    list.appendChild(todotextSpan);
+
+                    // Hide extra tasks after a certain limit (e.g., 3 tasks)
+                    if (i >= 3) {
+                        list.classList.add('hidden');
+                    }
+
+                    todoList.appendChild(list);
+                });
+                todoItem.appendChild(todoList);
+
+                // Add "See More" button for each todo-list
+                const seeMoreDiv = document.createElement('div');
+                seeMoreDiv.classList.add('see-more');
+                const seeMoreBtn = document.createElement('button');
+                seeMoreBtn.textContent = 'See More';
+                seeMoreBtn.addEventListener('click', function () {
+                    toggleSeeMore(todoList, seeMoreBtn);
+                });
+                seeMoreDiv.appendChild(seeMoreBtn);
+                todoItem.appendChild(seeMoreDiv);
+
+                todoContainer.appendChild(todoItem);
+            });
+        }
+
+       // Toggle the visibility of the hidden tasks within each todo-list
+    function toggleSeeMore(todoList, button) {
+       
+    
+        if (button.textContent === 'See More') { 
+            const hiddenItems = todoList.querySelectorAll('.hidden');
+            // Show the hidden items
+            hiddenItems.forEach(item => {
+                item.classList.remove('hidden');
+                item.classList.add('showing');
+            });
+            button.textContent = 'See Less';
+        } else {
+            const showItems = todoList.querySelectorAll('.showing');
+            // Hide the extra items again
+            showItems.forEach(item => {
+                item.classList.remove('showing');
+                item.classList.add('hidden');
+            });
+            button.textContent = 'See More';
+        }
+    }
+
+        // Call the fetchTODO function once the window has fully loaded
+        window.onload = function () {
+            fetchTODO();
+        };
+    </script>
+
+</body>
+
+</html>
